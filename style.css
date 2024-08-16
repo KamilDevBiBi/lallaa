@@ -1,0 +1,107 @@
+html{
+    font-size: clamp(20px, 2%, 14px);
+}
+html.no-scroll{
+    overflow-y: hidden;
+}
+body{
+    height: 100%;
+    background-image: linear-gradient( to bottom right, #9889ff, #c668ff);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+section{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+.puzzle-img{
+    flex-grow: 1;
+    flex-basis: 300px;
+    flex-shrink: 1;
+    height: 5em;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+.solve-puzzle{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    transition: 1s;
+    background-image: linear-gradient( to bottom right, #ffae00, #ff4800);
+    transform: scale(0);
+}
+.puzzle{
+    display: grid;
+    grid-template-columns: repeat(4, 4em);
+    grid-template-rows: repeat(4, 5.3em);
+    grid-gap: 0 0;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.puzzle.active{
+    animation: shaffle 1s linear both;
+}
+.solve-puzzle button{
+    width: 10rem;
+    height: 3.4rem;
+    font-size: 1.2em;
+    border-radius: 50px;
+    border: 0;
+    position: relative;
+    overflow: hidden;
+}
+.solve-puzzle button div{
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: scale(0);
+    z-index: 2;
+    animation: wave 0.6s linear;
+}
+@keyframes wave {
+    100%{
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+.solve-puzzle button:hover{
+    background-color: #b4b4b4;
+    cursor: pointer;
+}
+@keyframes shaffle {
+    100%{
+        grid-gap: 10px 10px;
+    }
+}
+.puzzle img{
+    width: 4em;
+    transition: 0.3s;
+
+}
+.puzzle img.abs{
+    position: absolute;
+}
+.puzzle img.no-select{
+    transition: 0s;
+    user-select: none;
+    z-index: 2;
+    cursor: pointer;
+}
+.puzzle div{
+    width: 100%;
+}
+.solve-puzzle.active{
+    transform: scale(1);
+}
+.puzzle-img:hover{
+    transform: scale(1.07);
+}
